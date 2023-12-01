@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  orion-db:
+    image: mysql:5.6
+    container_name: heaven-db
+    restart: always
+    volumes:
+      - orion:/var/lib/mysql
+      - ./database/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./database/:/docker-entrypoint-initdb.d/
+    ports:
+      - 127.0.0.1:7900:3306
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      timeout: 15s
+      retries: 3
+volumes:
+  orion:

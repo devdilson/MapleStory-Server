@@ -6,7 +6,8 @@
 /build/
 /dist/
 /nbproject/
-
+/target/
+/app/
 /tools/MapleArrowFetcher/build/
 /tools/MapleArrowFetcher/dist/
 /tools/MapleArrowFetcher/nbproject/
